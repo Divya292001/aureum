@@ -970,6 +970,9 @@ img {
 	font-weight: 700;
 	font-family: 'poppins';
 	text-transform: capitalize;
+
+	width: 100%;
+	text-align: center;
 }
 
 .sec-title .text {
@@ -5809,6 +5812,7 @@ img {
 	text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.10);
 	font-weight: 600;
 	margin-bottom: 10px;
+	color: #DAA520;
 }
 
 .fun-fact-section .count-box .counter-title {
@@ -5817,8 +5821,8 @@ img {
 	font-size: 22px;
 	line-height: 30px;
 	font-weight: 700;
-	color: #222222;
-	/* color: #ffffff; */
+	/* color: #222222; */
+	color: #ffffff;
 }
 
 .fun-fact-section .counter-column:nth-child(4n + 1) .count-box .icon {
@@ -5857,6 +5861,7 @@ img {
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
+	background-color: #2f4f4f;
 }
 
 .fun-fact-section.style-two:before {
@@ -7574,7 +7579,7 @@ img {
 
 .call-to-action .content-box h2 {
 	display: block;
-	font-size: 56px;
+	font-size: 30px;
 	line-height: 1.2em;
 	color: #ffffff;
 	font-weight: 700;
@@ -11707,7 +11712,7 @@ p {
 }
 
 .icon {
-	font-size: 30px;
+	font-size: 60px;
 	color: #999;
 	/* margin-bottom: 15px; */
 	margin: 25px;

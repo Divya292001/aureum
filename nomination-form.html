@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+<head>
+
+    <meta charset="utf-8">
+
+    <title>Aureum</title>
+
+    <!-- Stylesheets -->
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <link href="css/style.css" rel="stylesheet">
+
+    <link href="css/responsive.css" rel="stylesheet">
+
+    <!--Color Switcher Mockup-->
+
+    <link href="css/color-switcher-design.css" rel="stylesheet">
+
+
+
+    <!-- <link rel="shortcut icon" href="#" type="image/x-icon">
+
+    <link rel="icon" href="#" type="image/x-icon"> -->
+
+
+
+    <!-- Responsive -->
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #1a365d;
+            /* Navy Blue */
+            --secondary: #DAA520;
+            /* Goldenrod */
+            --accent: #e8c07d;
+            /* Light Gold */
+            --text: #2d3748;
+            --text-light: #718096;
+        }
+
+        .nomination-form .form-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .nomination-form .form-header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid var(--secondary);
+            padding-bottom: 20px;
+        }
+
+        .nomination-form .form-header h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .nomination-form .form-header p {
+            color: #888888;
+        }
+
+        .nomination-form .form-group {
+            margin-bottom: 25px;
+            box-shadow: none;
+            background: transparent;
+        }
+
+        .nomination-form .form-group input[type="text"] {
+            border: 1px solid #e2e8f0;
+            height: 40px;
+        }
+
+        .nomination-form .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .nomination-form .form-group .required {
+            color: #e53e3e;
+        }
+
+        .nomination-form .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .nomination-form .form-control:focus {
+            border-color: var(--secondary);
+            outline: none;
+            /* box-shadow: 0 0 0 3px rgba(218, 165, 32, 0.2); */
+            box-shadow: none;
+        }
+
+        .nomination-form select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 1em;
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .nomination-form .file-upload {
+            display: flex;
+            align-items: center;
+        }
+
+        .nomination-form .file-upload input[type="file"] {
+            width: 0.1px;
+            height: 0.1px;
+            opacity: 0;
+            overflow: hidden;
+            position: absolute;
+            z-index: -1;
+        }
+
+        .nomination-form .file-upload label {
+            padding: 12px 20px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .nomination-form .file-upload label:hover {
+            background: #c1911c;
+        }
+
+        .nomination-form .file-upload .file-name {
+            margin-left: 15px;
+            color: #888888;
+            font-size: 14px;
+        }
+
+        .nomination-form .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+
+        .nomination-form .checkbox-group input {
+            margin-right: 15px;
+            margin-top: 3px;
+        }
+
+        .nomination-form .checkbox-group label {
+            font-size: 14px;
+            color: #888888;
+        }
+
+        .nomination-form .form-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+
+        .nomination-form .btn {
+            padding: 12px 30px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 16px;
+        }
+
+        .nomination-form .btn-primary {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .nomination-form .btn-primary:hover {
+            background: #c1911c;
+        }
+
+        .nomination-form .btn-secondary {
+            background: #e2e8f0;
+            color: var(--text);
+        }
+
+        .nomination-form .btn-secondary:hover {
+            background: #cbd5e0;
+        }
+
+        .nomination-form .login-notice {
+            background: #fffaf0;
+            border-left: 4px solid var(--secondary);
+            padding: 15px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nomination-form .login-notice i {
+            color: var(--secondary);
+            margin-right: 15px;
+            font-size: 1.5rem;
+        }
+
+        .nomination-form {
+            padding-top: 80px;
+        }
+
+        @media (max-width: 768px) {
+            .nomination-form .form-container {
+                padding: 20px;
+            }
+
+            .nomination-form .form-header h2 {
+                font-size: 1.8rem;
+            }
+
+            .nomination-form .form-actions {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nomination-form .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+
+
+<body>
+
+
+
+    <div class="page-wrapper">
+
+
+
+        <!-- Preloader -->
+
+        <!-- <div class="preloader"></div> -->
+
+        <!-- Header span -->
+
+        <!-- Main Header-->
+
+        <header class="main-header" id="main-header">
+
+            <div class="main-box">
+
+                <div class="auto-container clearfix">
+
+                    <div class="logo-box">
+
+                        <!-- <div class="logo"><a href="index.html"><img src="images/logo.png" alt="" title=""></a></div> -->
+                        <div class="logo"><a href="index.html">
+                                <h2>AUREUM</h2>
+                            </a></div>
+                    </div>
+
+
+
+                    <!--Nav Box-->
+
+                    <div class="nav-outer clearfix">
+
+                        <!--Mobile Navigation Toggler-->
+
+                        <div class="mobile-nav-toggler"><span class="icon flaticon-menu"></span></div>
+
+                        <!-- Main Menu -->
+
+                        <nav class="main-menu navbar-expand-md navbar-light">
+
+                            <div class="navbar-header">
+
+                                <!-- Togg le Button -->
+
+                                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                    aria-expanded="false" aria-label="Toggle navigation">
+
+                                    <span class="icon flaticon-menu-button"></span>
+
+                                </button>
+
+                            </div>
+
+
+
+                            <div class="collapse navbar-collapse clearfix" id="navbarSupportedContent">
+
+                                <ul class="navigation clearfix">
+
+                                    <li><a href="index.html">Home</a>
+
+                                    </li>
+
+                                    <li class="dropdown"><a href="#">About</a>
+
+                                        <ul>
+
+                                            <li><a href="mission-vision-and-history.html">Mission & History</a></li>
+
+                                            <li><a href="why-participate.html">Why Enter</a></li>
+
+                                            <li><a href="award-trophy.html">Award Trophy</a></li>
+
+                                        </ul>
+
+                                    </li>
+
+                                    <li class="dropdown"><a href="#">Categories</a>
+
+                                        <ul>
+
+                                            <li><a href="categories.html">List of Award Categories</a></li>
+
+                                        </ul>
+
+                                    </li>
+
+                                    <li class="dropdown current"><a href="#">Nominate</a>
+
+                                        <ul>
+
+                                            <li><a href="how-to-nominate.html">How to Nominate</a></li>
+
+                                            <li><a href="nomination-form.html">Nomination Form</a></li>
+
+                                        </ul>
+
+                                    </li>
+
+                                    <li class="dropdown"><a href="#">Awards</a>
+
+                                        <ul>
+
+                                            <li><a href="#">Current Finalists</a></li>
+
+                                            <li><a href="#">Past Winners</a></li>
+
+                                        </ul>
+
+                                    </li>
+
+                                    <li class="dropdown"><a href="#">Event</a>
+
+                                        <ul>
+
+                                            <li><a href="#">Event Schedule</a></li>
+
+                                            <li><a href="#">Venue & Tickets</a></li>
+
+                                        </ul>
+
+                                    </li>
+
+                                    <li class="dropdown"><a href="#">Judges</a>
+
+                                        <ul>
+
+                                            <li><a href="#">List & Profiles</a></li>
+
+                                        </ul>
+
+                                    </li>
+
+                                    <li class="dropdown"><a href="#">Newsroom</a>
+
+                                        <ul>
+
+                                            <li><a href="#">Articles</a></li>
+
+                                            <li><a href="#">Press Releases</a></li>
+
+                                        </ul>
+
+                                    </li>
+
+                                    <li class="dropdown"><a href="#">Contact</a>
+
+                                        <ul>
+
+                                            <li><a href="#">Contact Form</a></li>
+
+                                            <li><a href="#">FAQs</a></li>
+
+                                        </ul>
+
+                                    </li>
+
+                                    <li class="outer-box">
+
+                                        <div class="btn-box">
+                                            <a class="custm-Btn" href="#">
+                                                <div class="sign"><i class="fas fa-sign-in-alt"></i></div>
+                                                <div class="login">Login</div>
+                                            </a>
+                                        </div>
+                                    </li>
+
+                                </ul>
+
+                            </div>
+
+                        </nav>
+
+                        <!-- Main Menu End-->
+
+
+
+                        <!-- Outer box -->
+
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Mobile Menu  -->
+
+            <div class="mobile-menu">
+
+                <div class="menu-backdrop"></div>
+
+                <div class="close-btn"><span class="icon flaticon-cancel-1"></span></div>
+
+
+
+                <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
+
+                <nav class="menu-box">
+
+                    <div class="nav-logo"><a href="index.html">
+                            <h2>AUREUM</h2>
+                        </a></div>
+
+
+
+                    <ul class="navigation clearfix">
+                        <!--Keep This Empty / Menu will come through Javascript-->
+                    </ul>
+
+                </nav>
+
+            </div><!-- End Mobile Menu -->
+
+
+
+        </header>
+
+        <!--End Main Header -->
+        <!-- Banner Section -->
+
+        <section class="nomination-form">
+            <div class="form-container">
+                <div class="form-header page-header">
+                    <h1>Award Nomination Form</h1>
+                    <p>Submit your nomination for consideration</p>
+                </div>
+
+                <div class="login-notice">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <div>You must be logged in to submit a nomination. <a href="#"
+                            style="color: var(--secondary);">Login here</a> or <a href="#"
+                            style="color: var(--secondary);">create an account</a>.</div>
+                </div>
+
+                <form id="nominationForm">
+                    <!-- Nominee Information -->
+                    <div class="form-group">
+                        <label for="nomineeName">Nominee Name <span class="required">*</span></label>
+                        <input type="text" id="nomineeName" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="company">Company/Organization <span class="required">*</span></label>
+                        <input type="text" id="company" class="form-control" required>
+                    </div>
+
+                    <!-- Award Category -->
+                    <div class="form-group">
+                        <label for="awardCategory">Award Category <span class="required">*</span></label>
+                        <select id="awardCategory" class="form-control" required>
+                            <option value="">-- Select a category --</option>
+                            <option value="startup">Best Tech Startup</option>
+                            <option value="ceo">Tech CEO of the Year</option>
+                            <option value="ai">AI Excellence Award</option>
+                            <option value="cyber">Cybersecurity Innovation</option>
+                            <option value="mobile">Best Mobile App</option>
+                            <option value="lifetime">Lifetime Tech Achievement</option>
+                            <option value="woman">Tech Woman of the Year</option>
+                            <option value="blockchain">Blockchain Innovation Award</option>
+                        </select>
+                    </div>
+
+                    <!-- Achievement Summary -->
+                    <div class="form-group">
+                        <label for="achievementSummary">Achievement Summary (300-500 words) <span
+                                class="required">*</span></label>
+                        <textarea id="achievementSummary" class="form-control" required></textarea>
+                        <div style="font-size: 12px; color: #888888; margin-top: 5px;">Minimum 300 words
+                            required</div>
+                    </div>
+
+                    <!-- Supporting Documents -->
+                    <div class="form-group">
+                        <label>Upload Supporting Documents</label>
+                        <div class="file-upload">
+                            <input type="file" id="supportingDocs" multiple>
+                            <label for="supportingDocs"><i class="fas fa-upload" style="margin-right: 8px;"></i> Choose
+                                Files</label>
+                            <span class="file-name">No files selected</span>
+                        </div>
+                        <div style="font-size: 12px; color: #888888; margin-top: 5px;">PDF, DOCX, or JPG files
+                            only (max 10MB each)</div>
+                    </div>
+
+                    <!-- Consent -->
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="consent" required>
+                        <label for="consent">I confirm that all information provided is accurate and I have obtained
+                            consent from the nominee to submit this nomination. <span class="required">*</span></label>
+                    </div>
+
+                    <!-- Form Actions -->
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary">Save as Draft</button>
+                        <button type="submit" class="btn btn-primary">Submit Nomination</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+
+
+        <footer class="main-footer style-two">
+
+            <div class="auto-container">
+
+                <!-- Footer Content -->
+
+                <div class="footer-content">
+
+                    <div class="footer-logo"><a href="#">
+                            <h2>AUREUM</h2>
+                        </a></div>
+
+                    <ul class="footer-nav">
+
+                        <li><a href="#">Home</a></li>
+
+                        <li><a href="#">About Us</a></li>
+
+                        <li><a href="#">Categories</a></li>
+
+                        <li><a href="#">Nominate</a></li>
+
+                        <li><a href="#">Awards</a></li>
+
+                        <li><a href="#">Event</a></li>
+
+                        <li><a href="#">Judges</a></li>
+
+                        <li><a href="#">Newsroom</a></li>
+
+                        <li><a href="#">Contact</a></li>
+
+                    </ul>
+
+                    <div class="copyright-text">© Copyright 2025 All Rights Reserved by <a
+                            href="index.html"><span>AUREUM.</span> </a> Designed and Developed by <a
+                            href="https://sunseaz.com/" target="_blank">Sunseaz Technologies Pvt.Ltd.</a></div>
+
+
+                    <ul class="social-icon-one">
+
+                        <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
+
+                        <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+
+                        <li><a href="#"><span class="fab fa-pinterest"></span></a></li>
+
+                        <li><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </footer>
+
+        <!-- End Footer -->
+
+
+
+    </div>
+
+    <!--End pagewrapper-->
+
+
+
+    <!-- Color Palate / Color Switcher -->
+
+    <!-- <div class="color-palate">
+
+        <div class="color-trigger">
+
+            <i class="fa fa-cog"></i>
+
+        </div>
+
+        <div class="color-palate-head">
+
+            <h6>Choose Your Demo</h6>
+
+        </div>
+
+        <ul class="box-version option-box">
+            <li>Full width</li>
+            <li class="box">Boxed</li>
+        </ul>
+
+        <ul class="rtl-version option-box">
+            <li>LTR Version</li>
+            <li class="rtl">RTL Version</li>
+        </ul>
+
+        <div class="palate-foo">
+
+            <span>You will find much more options for colors and styling in admin panel. This color picker is used only
+                for demonstation purposes.</span>
+
+        </div>
+
+        <a href="#" class="purchase-btn">Purchase now</a>
+
+    </div> -->
+    <!-- End Color Switcher -->
+
+
+
+    <!--Search Popup-->
+
+    <div id="search-popup" class="search-popup">
+
+        <div class="close-search theme-btn"><span class="fas fa-window-close"></span></div>
+
+        <div class="popup-inner">
+
+            <div class="overlay-layer"></div>
+
+            <div class="search-form">
+
+                <form method="post" action="">
+
+                    <div class="form-group">
+
+                        <fieldset>
+
+                            <input type="search" class="form-control" name="search-input" value=""
+                                placeholder="Search Here" required>
+
+                            <input type="submit" value="Search Now!" class="theme-btn">
+
+                        </fieldset>
+
+                    </div>
+
+                </form>
+
+
+
+                <br>
+
+                <h3>Recent Search Keywords</h3>
+
+                <ul class="recent-searches">
+
+                    <li><a href="#">Seo</a></li>
+
+                    <li><a href="#">Bussiness</a></li>
+
+                    <li><a href="#">Events</a></li>
+
+                    <li><a href="#">Digital</a></li>
+
+                    <li><a href="#">Conferance</a></li>
+
+                </ul>
+
+
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+
+
+    <!--Scroll to top-->
+
+    <div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-angle-double-up"></span></div>
+
+    <script src="js/jquery.js"></script>
+
+    <script src="js/popper.min.js"></script>
+
+    <script src="js/bootstrap.min.js"></script>
+
+    <script src="js/jquery-ui.js"></script>
+
+    <script src="js/jquery.fancybox.js"></script>
+
+    <script src="js/appear.js"></script>
+
+    <script src="js/owl.js"></script>
+
+    <script src="js/jquery.countdown.js"></script>
+
+    <script src="js/wow.js"></script>
+
+    <script src="js/script.js"></script>
+
+    <!-- Color Setting -->
+
+    <script src="js/color-settings.js"></script>
+
+    <script>
+        // File upload name display
+        document.getElementById('supportingDocs').addEventListener('change', function (e) {
+            const files = e.target.files;
+            const fileNameDisplay = document.querySelector('.file-name');
+
+            if (files.length > 0) {
+                if (files.length === 1) {
+                    fileNameDisplay.textContent = files[0].name;
+                } else {
+                    fileNameDisplay.textContent = files.length + ' files selected';
+                }
+            } else {
+                fileNameDisplay.textContent = 'No files selected';
+            }
+        });
+
+        // Word count validation (simplified example)
+        document.getElementById('achievementSummary').addEventListener('input', function (e) {
+            const wordCount = e.target.value.trim().split(/\s+/).length;
+            // You would add validation logic here
+        });
+    </script>
+
+</body>
+
+
+
+</html>
